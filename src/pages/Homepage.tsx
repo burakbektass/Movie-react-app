@@ -1,0 +1,6 @@
+export interface IHomePageProps{}
+
+const Homepage: React.FC<IHomePageProps> = (props) => {
+    return <h1>Homepage</h1>
+};
+export default Homepage;
