@@ -13,8 +13,8 @@ type MoviesContextObject = {
   movies: Movie[];
   singleMovie: {};
   loading: boolean;
-  searchMovies: () => Movie[];
-  getSingleMovie: () => Movie;
+  searchMovies: (searchTerm:string) => Movie[];
+  getSingleMovie: (id:string) => Movie;
   clearSingleMovie: () => void;
 };
 
@@ -22,15 +22,15 @@ export const MoviesContext = React.createContext<MoviesContextObject>({
   movies: [],
   singleMovie: {},
   loading: false,
-  searchMovies,
-  getSingleMovie,
-  clearSingleMovie,
 });
 
 const initialState: MoviesContextObject = {
   movies: [],
   singleMovie: {},
   loading: false,
+  searchMovies,
+  getSingleMovie,
+  clearSingleMovie
 };
 
 const MoviesContextProvider: React.FC<PropsWithChildren<{}>> = (props) => {
