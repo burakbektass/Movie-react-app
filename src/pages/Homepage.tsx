@@ -1,3 +1,4 @@
+import './pages.css';
 export interface IHomePageProps{}
 
 const Homepage: React.FC<IHomePageProps> = (props) => {

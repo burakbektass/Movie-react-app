@@ -3,6 +3,7 @@ import React from "react";
 import Header from "./components/Header";
 import CardItem from "./components/CardItem";
 import MoviesContextProvider from "./store/movies-context";
+import MoviesContext from './store/movies-context'
 import "./App.css";
 
 export interface IApplicationProps {}
@@ -11,9 +12,6 @@ const App: React.FC<IApplicationProps> = (props) => {
     <MoviesContextProvider>
       <div className="App">
         <Header></Header>
-        <div className="container">
-          <CardItem></CardItem>
-        </div>
       </div>
     </MoviesContextProvider>
   );

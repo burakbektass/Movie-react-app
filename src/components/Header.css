@@ -7,15 +7,19 @@
     line-height: 30px;
     background: #f8f8f8;
     display:flex;
-    justify-content: space-between;
+    justify-content: space-around;
   }
   .demo-nav a {
     padding: 0 8px;
     line-height: 30px;
   }
   .searchbar{
-    float: right;
-    width: 5px;
+
+    width: 60px;
+    display: flex;
+    align-items:stretch;
+    justify-content:center
+
   }
   .app-list {
     margin-top: 16px;

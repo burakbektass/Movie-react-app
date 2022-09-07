@@ -16,10 +16,14 @@ type MoviesContextObject = {
   
 };
 
-export const MoviesContext = React.createContext<MoviesContextObject>({
+export const MoviesContext = React.createContext<MoviesContextObject | any>({
   movies: [],
   singleMovie: {},
   loading: false,
+  searchMovies:() =>{},
+  getSingleMovie:() =>{},
+  clearSingleMovie:() =>{},
+
 });
 
 const initialState: MoviesContextObject = {

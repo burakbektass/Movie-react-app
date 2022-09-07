@@ -1,12 +1,10 @@
-import {Breadcrumb,Input,} from "antd";
+import { Breadcrumb, Input } from "antd";
 import "./Header.css";
-import { HashRouter,Link, Route, Routes, useLocation } from "react-router-dom";
+import { HashRouter, Link, Route, Routes, useLocation } from "react-router-dom";
 import Homepage from "../pages/Homepage";
 import Aboutpage from "../pages/Aboutpage";
 import Singlepage from "../pages/Singlepage";
-
-// search bar
-const { Search } = Input; 
+import Searchbar from './Searchbar';
 
 
 // Breadcrumb and navbar
@@ -26,7 +24,7 @@ const Navbar: React.FC = () => {
       </Breadcrumb.Item>
     );
   });
-  const breadcrumbItems  = [
+  const breadcrumbItems = [
     // type belirleyemedim
     <Breadcrumb.Item key="home">
       <Link to="/">Home</Link>
@@ -38,28 +36,18 @@ const Navbar: React.FC = () => {
         <Link to="/">Home</Link>
         <Link to="/movies">Movies List</Link>
         <Link to="/about">About</Link>
-        <Search
-
-      placeholder="search for movies"
-      allowClear
-      enterButton="Search"
-      size="large"
-      // onSearch={onSearch}
-    />
-        
       </div>
       <Breadcrumb>{breadcrumbItems}</Breadcrumb>
-      
-          <Routes>
-            <Route path="/home" element={<Homepage />}></Route>
-            <Route path="/about" element={<Aboutpage />}></Route>
-            <Route path="/movies/:id" element={<Singlepage />}></Route>
-          </Routes>
-        
+      <Searchbar></Searchbar>
+
+      <Routes>
+        <Route path="/home" element={<Homepage />}></Route>
+        <Route path="/about" element={<Aboutpage />}></Route>
+        <Route path="/movies/:name" element={<Singlepage />}></Route>
+      </Routes>
     </div>
   );
 };
-
 
 const Header: React.FC = () => {
   return (

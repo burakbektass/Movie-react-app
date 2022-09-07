@@ -1,3 +1,4 @@
+import './pages.css';
 export interface IAboutPageProps{};
 const Aboutpage:React.FC<IAboutPageProps> = (props) => {
   return (
@@ -7,7 +8,7 @@ const Aboutpage:React.FC<IAboutPageProps> = (props) => {
         <p>React, TypeScript, Ant-design and SASS APP</p>
         <div>
           <p>Things learnt from app build:</p>
-          <ul>
+          <ul className="aboutpage_ul">
             <li>React (create-react-app)</li>
             <li>TypeScript</li>
             <li>Axios AJAX Request</li>
