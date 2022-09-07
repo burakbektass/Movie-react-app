@@ -10,31 +10,30 @@ const Searchbar: React.FC = () => {
   //   const movieCtx = useContext<any>(MoviesContext);
   //   const { searchMovies } = movieCtx;
 
-  const onSearchHandler= (e: React.ChangeEvent<HTMLInputElement>) =>{ 
-    e.preventDefault();
-    console.log("dfdsfds")
-    const searchTerm = movieInputRef.current!.value;
-    if (searchTerm.trim() === "") {
-      console.log("Invalid Input");
-      return;
-    } else {
-        // setSearchTerm(e.currentTarget.value);
-        console.log(searchTerm);
-      // searchMovies(searchTerm);
-    }
-  };
-
+  // const onSearchHandler= (e: React.ChangeEvent<HTMLInputElement>) =>{ 
+  //   e.preventDefault();
+  //   const searchTerm = movieInputRef.current!.value;
+  //   if (searchTerm.trim() === "") {
+  //     console.log("Invalid Input");
+  //     return;
+  //   } else {
+  //       // setSearchTerm(e.currentTarget.value);
+  //       console.log(searchTerm);
+  //     // searchMovies(searchTerm);
+  //   }
+  // };
+const deneme = (e:any)=>{
+  console.log("11",e.target.value);
+}
   return (
-    <form onSubmit={() => onSearchHandler}>
       <Search
         className="searchbar"
         placeholder="search for movies"
         allowClear
         enterButton="Search"
         size="large"
-        onSearch={() => onSearchHandler}// Fonksiyon type ını böyle belirtiyoruz 
+        onChange={(e) => deneme(e)}// Fonksiyon type ını böyle belirtiyoruz 
       />
-    </form>
   );
 };
 

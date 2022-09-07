@@ -7,13 +7,14 @@ type MoviesContextObject = {
   singleMovie: {};
 };
 
-export const MoviesContext = createContext<MoviesContextObject | null>({
+const initialState = {
   movies: [],
   singleMovie: {},
-//   searchMovies: () => {},
-//   getSingleMovie: () => {},
-//   clearSingleMovie: () => {},
-});
+};
+
+export const MoviesContext = createContext<MoviesContextObject | null>(
+  initialState
+);
 
 const MoviesContextProvider: React.FC<PropsWithChildren<{}>> = (props) => {
   const [moviesState, setMoviesState] = useState<Movie[]>([]);
