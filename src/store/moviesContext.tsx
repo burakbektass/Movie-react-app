@@ -1,9 +1,9 @@
 import { createContext, PropsWithChildren, useState } from "react";
 import axios from "axios";
-import Movie from "../models/movie";
+import {id,name,summary,rating,image,status} from "../models/movie";
 
 type MoviesContextObject = {
-  movies: Movie[];
+  movies: [];
   singleMovie: {};
 };
 
@@ -17,7 +17,7 @@ export const MoviesContext = createContext<MoviesContextObject | null>(
 );
 
 const MoviesContextProvider: React.FC<PropsWithChildren<{}>> = (props) => {
-  const [moviesState, setMoviesState] = useState<Movie[]>([]);
+  const [moviesState, setMoviesState] = useState<Array<MoviesContextObject>>([]);
 
   const searchMovies = async (searchTerm: string) => {
     const { data } = await axios.get(
