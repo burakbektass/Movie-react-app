@@ -13,9 +13,7 @@ type MoviesContextObject = {
   movies: Movie[];
   singleMovie: {};
   loading: boolean;
-  searchMovies: (searchTerm:string) => Movie[];
-  getSingleMovie: (id:string) => Movie;
-  clearSingleMovie: () => void;
+  
 };
 
 export const MoviesContext = React.createContext<MoviesContextObject>({
@@ -28,9 +26,6 @@ const initialState: MoviesContextObject = {
   movies: [],
   singleMovie: {},
   loading: false,
-  searchMovies,
-  getSingleMovie,
-  clearSingleMovie
 };
 
 const MoviesContextProvider: React.FC<PropsWithChildren<{}>> = (props) => {
@@ -63,7 +58,7 @@ const MoviesContextProvider: React.FC<PropsWithChildren<{}>> = (props) => {
     setMoviesState(data);
   };
 
-  const contextValue: MoviesContextObject = {
+  const contextValue: MoviesContextObject | any = {  // any yazdım ççünkü fonksiyonlar yüzünden hata alıyordum
     movies: moviesState,
     singleMovie: state.singleMovie,
     loading: state.loading,

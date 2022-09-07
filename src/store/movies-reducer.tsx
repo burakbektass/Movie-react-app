@@ -9,7 +9,7 @@ import {
   type MovieState ={
     movies: Movie[],
     singleMovie:{},
-    loading: boolean
+    loading: boolean,
   }
   
 const moviesReducer = (state:MovieState,action:any) =>{  // action için type bulamadım
