@@ -1,6 +1,6 @@
 import React from "react";
 // components
-import Header from "./components/Header";
+import Header from "./components/Header/Header";
 import MoviesContextProvider from "./store/moviesContext";
 import "./App.css";
 
