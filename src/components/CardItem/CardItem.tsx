@@ -1,7 +1,7 @@
-import React,{ useState, useEffect, useContext} from "react";
-import {Route} from 'react-router-dom';
-import {movie} from "../../store/moviesContext";
-import axios from 'axios';
+import React, { useState, useEffect, useContext } from "react";
+import MoviesContext from "../../store/moviesContext";
+import { Route } from "react-router-dom";
+import axios from "axios";
 import "antd/dist/antd.css";
 import "./CardItem.scss";
 import { Card } from "antd";
@@ -10,62 +10,51 @@ import SinglePage from "../../pages/SingleMovie/Singlepage";
 
 const { Meta } = Card;
 
-export interface ICardItemProps{};
+export interface ICardItemProps {}
 const CardItem: React.FC<ICardItemProps> = (props) => {
-
-  const movieCtx = useContext<any>(movie)
-
-  
-  
-  const myMovie: any | null = {
-    // Type bulamadım
-    id: "45",
-    name: "Man In Black",
-    rating: "9.9",
-    image: "https://static.tvmaze.com/uploads/images/medium_portrait/33/84755.jpg",
-    category: ["action"],
-    status: "running",
-    summary:
-    "Bu filmin özetidir",
-  };
-
+  const movieCtx = useContext(MoviesContext);
+  const [renderSingleMovieState, setRenderSingleMovieState] =
+    useState<boolean>(false);
+  const searchTerm = "spiderman"; // burası context ile searchbardan alınacak
   const [moviesState, setMoviesState] = useState<Array<any>>([]);
 
   useEffect(() => {
-    const getMovies = async (searchTerm: string) => {
+    const getMovies = async (key: string) => {
       const { data } = await axios.get(
-        `https://api.tvmaze.com/search/shows?q=${searchTerm}`
+        `https://api.tvmaze.com/search/shows?q=${key}`
       );
       setMoviesState(data);
     };
-    console.log("useEffect çalıştı");
-    getMovies("man in black");   
-      
+    getMovies(searchTerm);
   }, []);
   console.log(moviesState);
 
-  const singleMovie = (name:any):void => {
+  const singleMovie = (name: any, id: string): void => {
     console.log("single movie");
-    <Route path ={`/movies/${name}`} element={<SinglePage id={movieCtx.id}/>}>
-
-    </Route>
+    console.log(id);
+    setRenderSingleMovieState(true);
+    <Route path={`/movies/${name}`} element={<SinglePage movie_id={id} />} />;
   };
-
-
-  return (
-    
-      <Link to={`/movies/${myMovie.name}`}>
+  return <div className="card-items">
+    {moviesState.map((movie, index) => {
+    return (
+      <Link key={index} to={`/movies/${movie.show.name}`}>
         <Card
-          onClick={()=> singleMovie(myMovie.name)}
+          
+          onClick={() => singleMovie(movie.show.name, movie.show.id)}
           className="cardItem"
           hoverable
-          cover={<img alt="example" src={myMovie.image} />}
+          cover={<img alt="example" className="card-image" src={movie.show.image.medium} />}
         >
-          <Meta title={myMovie.name} description={`IMDB / ${myMovie.rating}`} />
+          <Meta
+            title={movie.show.name}
+            description={`IMDB / ${(movie.score * 10).toFixed(1)}`}
+          />
         </Card>
       </Link>
-    
-  );
+    );
+  })}
+  </div>
 };
 
 export default CardItem;

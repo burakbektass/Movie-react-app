@@ -1,6 +1,8 @@
 import CardItem from "../../components/CardItem/CardItem";
 import "./SinglePage.scss";
-export interface ISinglePageProps{};
+export interface ISinglePageProps{
+  movie_id?:string
+};
 const Singlepage: React.FC<ISinglePageProps> = (props) => {
   const myMovie: any = {
     // Type bulamadım
@@ -13,9 +15,12 @@ const Singlepage: React.FC<ISinglePageProps> = (props) => {
     summary:
     "Bu filmin özetidir",
   };
+
+  {console.log("props id si",props.movie_id)}
   return (
     <div>
       <h1>Singlepage</h1>
+
       <div className="single-movie">
         <img
           src={

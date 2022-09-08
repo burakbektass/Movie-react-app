@@ -1,20 +1,22 @@
 .cardItem {
-  width: 240px;
-  border-radius: 3rem;
-}
-
-.listitem {
+  border-radius: 1rem;
   text-decoration: none;
-  width: 210px;
+  width: 220px;
   background: var(--offwhite-color);
   box-shadow: 0 0 1px 1px rgba(20, 23, 28, 0.1),
     0 3px 1px 0 rgba(20, 23, 28, 0.1);
-  margin: 1rem auto;
+  margin: 1rem 1rem;
   cursor: pointer;
-  display: inline-block;
+  display:inline-block;
+  
+}
+.ant-card-cover{
+  & img{
+    border-radius: 1rem;
+  }
 }
 
-.listitem:hover {
+.cardItem:hover {
   transform: scale(1.03);
 }
 
