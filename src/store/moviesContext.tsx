@@ -12,6 +12,6 @@ export const movie:any = {
     "Bu filmin özetidir",
 };
 
-const MoviesContext = createContext<MoviesContextObject | any | null>(movie);
+const MoviesContext = createContext<any | null>(movie);
 
 export default MoviesContext;
