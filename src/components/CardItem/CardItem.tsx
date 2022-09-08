@@ -10,11 +10,12 @@ import SinglePage from "../../pages/SingleMovie/Singlepage";
 
 const { Meta } = Card;
 
-const CardItem: React.FC = (props) => {
+export interface ICardItemProps{};
+const CardItem: React.FC<ICardItemProps> = (props) => {
 
   
   
-  const myMovie: any = {
+  const myMovie: any | null = {
     // Type bulamadım
     id: "45",
     name: "Man In Black",
@@ -43,7 +44,7 @@ const CardItem: React.FC = (props) => {
 
   const singleMovie = (name:any):void => {
     console.log("single movie");
-    <Route path ={`/movies/${name}`} element={<SinglePage/>}>
+    <Route path ={`/movies/${name}`} element={<SinglePage id={myMovie.id}/>}>
 
     </Route>
   };

@@ -1,6 +1,7 @@
 import CardItem from "../../components/CardItem/CardItem";
-import "../pages.css";
-const Singlepage: React.FC = () => {
+import "./SinglePage.scss";
+export interface ISinglePageProps{};
+const Singlepage: React.FC<ISinglePageProps> = (props) => {
   const myMovie: any = {
     // Type bulamadım
     id: "45",

@@ -1,4 +1,4 @@
-import '../pages.css';
+import './Aboutpage.scss';
 export interface IAboutPageProps{};
 const Aboutpage:React.FC<IAboutPageProps> = (props) => {
   return (

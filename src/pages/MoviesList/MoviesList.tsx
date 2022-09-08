@@ -1,5 +1,4 @@
 import React from "react";
-import "../pages.css";
 import MoviesContext,{movie} from "../../store/moviesContext";
 
 import CardItem from "../../components/CardItem/CardItem";

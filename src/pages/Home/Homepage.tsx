@@ -1,4 +1,4 @@
-import "../pages.css";
+import './Homepage.scss'
 
 export interface IHomePageProps {}
 
