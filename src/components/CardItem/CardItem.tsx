@@ -1,5 +1,6 @@
-import React,{ useState, useEffect} from "react";
-import {Route} from 'react-router-dom'
+import React,{ useState, useEffect, useContext} from "react";
+import {Route} from 'react-router-dom';
+import {movie} from "../../store/moviesContext";
 import axios from 'axios';
 import "antd/dist/antd.css";
 import "./CardItem.scss";
@@ -10,7 +11,10 @@ import SinglePage from "../../pages/SingleMovie/Singlepage";
 const { Meta } = Card;
 
 const CardItem: React.FC = (props) => {
-  const movie: any = {
+
+  
+  
+  const myMovie: any = {
     // Type bulamadım
     id: "45",
     name: "Man In Black",
@@ -19,7 +23,7 @@ const CardItem: React.FC = (props) => {
     category: ["action"],
     status: "running",
     summary:
-      "özetdfhdskjfdhfkdfdfhdsfkjdsj",
+    "Bu filmin özetidir",
   };
 
   const [moviesState, setMoviesState] = useState<Array<any>>([]);
@@ -37,9 +41,9 @@ const CardItem: React.FC = (props) => {
   }, []);
   console.log(moviesState);
 
-  const singleMovie = (name:string="man-in-black"):void => {
+  const singleMovie = (name:any):void => {
     console.log("single movie");
-    <Route path ={`/movies/${name}`} element={<SinglePage item={movie}/>}>
+    <Route path ={`/movies/${name}`} element={<SinglePage/>}>
 
     </Route>
   };
@@ -47,14 +51,14 @@ const CardItem: React.FC = (props) => {
 
   return (
     
-      <Link to={`/${movie.name}`}>
+      <Link to={`/movies/${myMovie.name}`}>
         <Card
-          onClick={()=> singleMovie(movie.name)}
+          onClick={()=> singleMovie(myMovie.name)}
           className="cardItem"
           hoverable
-          cover={<img alt="example" src={movie.image} />}
+          cover={<img alt="example" src={myMovie.image} />}
         >
-          <Meta title={movie.name} description={`IMDB / ${movie.rating}`} />
+          <Meta title={myMovie.name} description={`IMDB / ${myMovie.rating}`} />
         </Card>
       </Link>
     

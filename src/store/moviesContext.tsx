@@ -11,21 +11,35 @@ const initialState = {
   singleMovie: {},
 };
 
-export const MoviesContext = createContext<MoviesContextObject | null>(null);
-
-const MoviesContextProvider: React.FC<PropsWithChildren<{}>> = (props) => {
-  
-  const contextValue: MoviesContextObject | any = {
-    // any yazdım ççünkü fonksiyonlar yüzünden hata alıyordum
-    movies: [],
-    singleMovie: [],
-  };
-
-  return (
-    <MoviesContext.Provider value={contextValue}>
-      {props.children}
-    </MoviesContext.Provider>
-  );
+export const movie: any = {
+  // Type bulamadım
+  id: "45",
+  name: "Man In Black",
+  rating: "9.9",
+  image: "https://static.tvmaze.com/uploads/images/medium_portrait/33/84755.jpg",
+  category: ["action"],
+  status: "running",
+  summary:
+    "Bu filmin özetidir",
 };
 
-export default MoviesContextProvider;
+const MoviesContext = createContext<MoviesContextObject | any | null>(movie);
+
+export default MoviesContext;
+
+// // const MoviesContextProvider: React.FC<Props<{}>> = (props) => {
+  
+// //   const contextValue: MoviesContextObject | any = {
+// //     // any yazdım ççünkü fonksiyonlar yüzünden hata alıyordum
+// //     movies: [],
+// //     singleMovie: [],
+// //   };
+
+// //   return (
+// //     <MoviesContext.Provider value={contextValue}>
+// //       {props.children}
+// //     </MoviesContext.Provider>
+// //   );
+// };
+
+// export default MoviesContextProvider;
