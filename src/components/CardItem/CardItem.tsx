@@ -11,11 +11,11 @@ import SinglePage from "../../pages/SingleMovie/Singlepage";
 const { Meta } = Card;
 
 export interface ICardItemProps {}
+
 const CardItem: React.FC<ICardItemProps> = (props) => {
   const movieCtx = useContext(MoviesContext);
-  const [renderSingleMovieState, setRenderSingleMovieState] =
-    useState<boolean>(false);
-  const searchTerm = "spiderman"; // burası context ile searchbardan alınacak
+
+  const searchTerm = "avengers"; // burası context ile searchbardan alınacak
   const [moviesState, setMoviesState] = useState<Array<any>>([]);
 
   useEffect(() => {
@@ -32,29 +32,40 @@ const CardItem: React.FC<ICardItemProps> = (props) => {
   const singleMovie = (name: any, id: string): void => {
     console.log("single movie");
     console.log(id);
-    setRenderSingleMovieState(true);
     <Route path={`/movies/${name}`} element={<SinglePage movie_id={id} />} />;
   };
-  return <div className="card-items">
-    {moviesState.map((movie, index) => {
-    return (
-      <Link key={index} to={`/movies/${movie.show.name}`}>
-        <Card
-          
-          onClick={() => singleMovie(movie.show.name, movie.show.id)}
-          className="cardItem"
-          hoverable
-          cover={<img alt="example" className="card-image" src={movie.show.image.medium} />}
-        >
-          <Meta
-            title={movie.show.name}
-            description={`IMDB / ${(movie.score * 10).toFixed(1)}`}
-          />
-        </Card>
-      </Link>
-    );
-  })}
-  </div>
+
+  return (
+    <div className="card-items">
+      {moviesState.map((movie, index) => {
+        return (
+          <Link key={index} to={`/movies/${movie.show.name}`}>
+            <Card
+              onClick={() => singleMovie(movie.show.name, movie.show.id)}
+              className="cardItem"
+              hoverable
+              cover={
+                <img
+                  alt="example"
+                  className="card-image"
+                  src={
+                    movie.show.image
+                      ? movie.show.image.medium
+                      : "https://www.publicdomainpictures.net/pictures/280000/velka/not-found-image-15383864787lu.jpg"
+                  }
+                />
+              }
+            >
+              <Meta
+                title={movie.show.name}
+                description={`IMDB / ${(movie.score * 10).toFixed(1)}`}
+              />
+            </Card>
+          </Link>
+        );
+      })}
+    </div>
+  );
 };
 
 export default CardItem;

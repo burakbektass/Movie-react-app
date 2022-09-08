@@ -1,22 +1,23 @@
-import CardItem from "../../components/CardItem/CardItem";
 import "./SinglePage.scss";
-export interface ISinglePageProps{
-  movie_id?:string
-};
+export interface ISinglePageProps {
+  movie_id?: string;
+}
 const Singlepage: React.FC<ISinglePageProps> = (props) => {
   const myMovie: any = {
     // Type bulamadım
     id: "45",
     name: "Man In Black",
     rating: "9.9",
-    image: "https://static.tvmaze.com/uploads/images/medium_portrait/33/84755.jpg",
+    image:
+      "https://static.tvmaze.com/uploads/images/medium_portrait/33/84755.jpg",
     genre: ["action"],
     status: "running",
-    summary:
-    "Bu filmin özetidir",
+    summary: "Bu filmin özetidir",
   };
 
-  {console.log("props id si",props.movie_id)}
+
+    console.log("props id si", props.movie_id);
+  
   return (
     <div>
       <h1>Singlepage</h1>
@@ -33,19 +34,19 @@ const Singlepage: React.FC<ISinglePageProps> = (props) => {
         <div className="single-movie-info">
           <h1>{myMovie.name}</h1>
           {myMovie.genres &&
-            myMovie.genres.map((genre:any) => (
+            myMovie.genres.map((genre: any) => (
               <span key={genre} className="singleshow__genre">
                 {genre}
               </span>
             ))}
-            <p>
-              <strong>Status:</strong> {myMovie.status && myMovie.status}
-            </p>
-            <p>
-              <strong>Rating:</strong>{" "}
-              {myMovie.rating ? myMovie.rating.average : "No rating"}
-            </p>
-            <p>{myMovie.summary}</p>
+          <p>
+            <strong>Status:</strong> {myMovie.status && myMovie.status}
+          </p>
+          <p>
+            <strong>Rating:</strong>{" "}
+            {myMovie.rating ? myMovie.rating.average : "No rating"}
+          </p>
+          <p>{myMovie.summary}</p>
         </div>
       </div>
     </div>

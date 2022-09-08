@@ -5,7 +5,7 @@
   background: var(--offwhite-color);
   box-shadow: 0 0 1px 1px rgba(20, 23, 28, 0.1),
     0 3px 1px 0 rgba(20, 23, 28, 0.1);
-  margin: 1rem 1rem;
+  margin: 0.5rem 0.5rem;
   cursor: pointer;
   display:inline-block;
   
@@ -20,17 +20,18 @@
   transform: scale(1.03);
 }
 
-.listitem__info {
+.cardItem-info {
   color: var(--dark-color);
   text-align: center;
 }
 
-.info__name {
+.cardItem-name {
   font-size: 1rem;
   padding: 5px;
 }
 
-.info__rating {
+.cardItem-rating {
   color: var(--secondary-color);
   padding: 5px;
 }
+
