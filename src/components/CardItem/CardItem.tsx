@@ -13,6 +13,8 @@ const { Meta } = Card;
 export interface ICardItemProps{};
 const CardItem: React.FC<ICardItemProps> = (props) => {
 
+  const movieCtx = useContext<any>(movie)
+
   
   
   const myMovie: any | null = {
@@ -44,7 +46,7 @@ const CardItem: React.FC<ICardItemProps> = (props) => {
 
   const singleMovie = (name:any):void => {
     console.log("single movie");
-    <Route path ={`/movies/${name}`} element={<SinglePage id={myMovie.id}/>}>
+    <Route path ={`/movies/${name}`} element={<SinglePage id={movieCtx.id}/>}>
 
     </Route>
   };
