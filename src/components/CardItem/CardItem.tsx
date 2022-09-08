@@ -1,27 +1,55 @@
-import React from "react";
+import React,{ useState, useEffect} from "react";
+import {Route} from 'react-router-dom'
+import axios from 'axios';
 import "antd/dist/antd.css";
 import "./CardItem.scss";
 import { Card } from "antd";
-import { BrowserRouter as Router, Link } from "react-router-dom";
+import { Link } from "react-router-dom";
+import SinglePage from "../../pages/SingleMovie/Singlepage";
 
 const { Meta } = Card;
 
 const CardItem: React.FC = (props) => {
   const movie: any = {
     // Type bulamadım
-    id: "4324",
-    name: "Batman",
-    rating: "8.9",
-    image: "https://os.alipayobjects.com/rmsportal/QBnOOoLaAfKPirc.png",
-    category: ["Action", "Drama"],
-    status: "Running",
+    id: "45",
+    name: "Man In Black",
+    rating: "9.9",
+    image: "https://static.tvmaze.com/uploads/images/medium_portrait/33/84755.jpg",
+    category: ["action"],
+    status: "running",
     summary:
-      "lorem ipsum dolor sit amet, consectetur adipisicing elit. Lorem ipsum dolor sit amet, consect",
+      "özetdfhdskjfdhfkdfdfhdsfkjdsj",
   };
+
+  const [moviesState, setMoviesState] = useState<Array<any>>([]);
+
+  useEffect(() => {
+    const getMovies = async (searchTerm: string) => {
+      const { data } = await axios.get(
+        `https://api.tvmaze.com/search/shows?q=${searchTerm}`
+      );
+      setMoviesState(data);
+    };
+    console.log("useEffect çalıştı");
+    getMovies("man in black");   
+      
+  }, []);
+  console.log(moviesState);
+
+  const singleMovie = (name:string="man-in-black"):void => {
+    console.log("single movie");
+    <Route path ={`/movies/${name}`} element={<SinglePage item={movie}/>}>
+
+    </Route>
+  };
+
+
   return (
-    <Router>
+    
       <Link to={`/${movie.name}`}>
         <Card
+          onClick={()=> singleMovie(movie.name)}
           className="cardItem"
           hoverable
           cover={<img alt="example" src={movie.image} />}
@@ -29,7 +57,7 @@ const CardItem: React.FC = (props) => {
           <Meta title={movie.name} description={`IMDB / ${movie.rating}`} />
         </Card>
       </Link>
-    </Router>
+    
   );
 };
 
