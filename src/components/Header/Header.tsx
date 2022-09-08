@@ -4,6 +4,7 @@ import { HashRouter, Link, Route, Routes, useLocation } from "react-router-dom";
 import Homepage from "../../pages/Home/Homepage";
 import Aboutpage from "../../pages/About/Aboutpage";
 import Singlepage from "../../pages/SingleMovie/Singlepage";
+import MoviesList from "../../pages/MoviesList/MoviesList";
 import Searchbar from "../Searchbar/Searchbar";
 
 // Breadcrumb and navbar
@@ -40,8 +41,9 @@ const Navbar: React.FC = () => {
       <Searchbar></Searchbar>
 
       <Routes>
-        <Route path="/home" element={<Homepage />}></Route>
+        <Route path="/" element={<Homepage />}></Route>
         <Route path="/about" element={<Aboutpage />}></Route>
+        <Route path="/movies" element={<MoviesList/> }></Route>
         <Route path="/movies/:name" element={<Singlepage />}></Route>
       </Routes>
     </div>

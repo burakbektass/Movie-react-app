@@ -6,7 +6,7 @@ import { BrowserRouter as Router, Link } from "react-router-dom";
 
 const { Meta } = Card;
 
-const CardItem: React.FC = () => {
+const CardItem: React.FC = (props) => {
   const movie: any = {
     // Type bulamadım
     id: "4324",

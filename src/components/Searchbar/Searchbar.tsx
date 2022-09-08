@@ -23,7 +23,7 @@ const Searchbar: React.FC = () => {
   //   }
   // };
   const deneme = (e: any) => {
-    console.log("tuşa basıldı", e);
+    console.log("tuşa basıldı", e.target.value);
   };
 
   const onSearch = (e: any) => {
@@ -36,7 +36,7 @@ const Searchbar: React.FC = () => {
       allowClear
       enterButton="Search"
       size="large"
-      onChange={(e) => deneme(e)} // bu anlık olarak değişikliği konsola veriyor
+      // onChange={(e) => deneme(e)} // bu anlık olarak değişikliği konsola veriyor
       onSearch={(e) => onSearch(e)} // bu butona basınca direkt yazılı olanı consola basıyor
     />
   );
