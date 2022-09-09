@@ -44,7 +44,7 @@ const Navbar: React.FC= (props) => {
         <Route path="/" element={<Homepage />}></Route>
         <Route path="/about" element={<Aboutpage />}></Route>
         <Route path="/movies" element={<MoviesList/> }></Route>
-        <Route path="/movies/:name" element={<Singlepage />}></Route>
+        <Route path="/movies/:name" element={<Singlepage/>}></Route>
       </Routes>
     </div>
   );

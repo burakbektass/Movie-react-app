@@ -11,12 +11,16 @@ import Singlepage from "../../pages/SingleMovie/Singlepage";
 const { Meta } = Card;
 
 export interface ICardItemProps {
-  movie_id?:string
+  movie_id?:number
+  searchTerm?:string
 }
 
 const CardItem: React.FC<ICardItemProps> = (props) => {
   const searchTerm = "the"; // burası context ile searchbardan alınacak
   const [moviesState, setMoviesState] = useState<Array<any>>([]);
+  const [singleId,setSingleId] = useState<number>(0)
+  const [singleName,setSingleName] = useState<string>("")
+  const [routeSingle, setRouteSingle] = useState<boolean>(false);
 
   useEffect(() => {
     const getMovies = async (key: string) => {
@@ -27,24 +31,19 @@ const CardItem: React.FC<ICardItemProps> = (props) => {
     };
     getMovies(searchTerm);
   }, []);
-
-  console.log(moviesState);
   
-
-  const singleMovie = (name: any, id: string) => {
-    console.log("CardItem içinde singleMovie fonksiyonu")
-    return <Route path={`/movies/${name}`} element={<Singlepage movie_name={name} movie_id={id} />} />;
+  const singleMovie = (id:number, name:string): void => {
+    console.log("CardItem içinde singleMovie fonksiyonu");
+    <Route path={`/movies/${name}`} element={<Singlepage movie_name={name} movie_id={id} />}></Route>
   };
-
-  console.log(props.movie_id)
-
+  //console.log(props.movie_id,)
   return (
     <div className="card-items">
       {moviesState.map((movie, index) => {
         return (
           <Link key={index} to={`/movies/${movie.show.name}`}>
             <Card
-              onClick={() => singleMovie(movie.show.name, movie.show.id)}
+              onClick={(e) => singleMovie(movie.show.id, movie.show.name)}
               className="cardItem"
               hoverable
               cover={
@@ -64,6 +63,7 @@ const CardItem: React.FC<ICardItemProps> = (props) => {
                 description={`IMDB / ${(movie.score * 10).toFixed(1)}`}
               />
             </Card>
+            
           </Link>
         );
       })}

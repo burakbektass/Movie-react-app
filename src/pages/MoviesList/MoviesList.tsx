@@ -8,7 +8,7 @@ export interface IMoviesListProps {}
 
 const MoviesList: React.FC<IMoviesListProps> = (props) => {
   const movieCtx = useContext(MoviesContext);
-  console.log(movie.id,"movie List item")
+  // console.log(movie.id,"movie List item")
   
 return (
     <MoviesContext.Provider value={movie}>

@@ -2,7 +2,7 @@ import { useEffect, useState } from "react";
 import axios from "axios";
 import "./SinglePage.scss";
 export interface ISinglePageProps {
-  movie_id?: string;
+  movie_id?: number;
   movie_name?: string;
 }
 const Singlepage: React.FC<ISinglePageProps> = (props) => {
