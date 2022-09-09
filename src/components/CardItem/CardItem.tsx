@@ -6,16 +6,16 @@ import "antd/dist/antd.css";
 import "./CardItem.scss";
 import { Card } from "antd";
 import { Link } from "react-router-dom";
-import SinglePage from "../../pages/SingleMovie/Singlepage";
+import Singlepage from "../../pages/SingleMovie/Singlepage";
 
 const { Meta } = Card;
 
-export interface ICardItemProps {}
+export interface ICardItemProps {
+  movie_id?:string
+}
 
 const CardItem: React.FC<ICardItemProps> = (props) => {
-  const movieCtx = useContext(MoviesContext);
-
-  const searchTerm = "avengers"; // burası context ile searchbardan alınacak
+  const searchTerm = "the"; // burası context ile searchbardan alınacak
   const [moviesState, setMoviesState] = useState<Array<any>>([]);
 
   useEffect(() => {
@@ -27,13 +27,16 @@ const CardItem: React.FC<ICardItemProps> = (props) => {
     };
     getMovies(searchTerm);
   }, []);
-  console.log(moviesState);
 
-  const singleMovie = (name: any, id: string): void => {
-    console.log("single movie");
-    console.log(id);
-    <Route path={`/movies/${name}`} element={<SinglePage movie_id={id} />} />;
+  console.log(moviesState);
+  
+
+  const singleMovie = (name: any, id: string) => {
+    console.log("CardItem içinde singleMovie fonksiyonu")
+    return <Route path={`/movies/${name}`} element={<Singlepage movie_name={name} movie_id={id} />} />;
   };
+
+  console.log(props.movie_id)
 
   return (
     <div className="card-items">

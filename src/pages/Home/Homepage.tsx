@@ -1,8 +1,12 @@
-import './Homepage.scss'
+import './Homepage.scss';
+import CarouselItem from '../../components/CarouselItem/CarouselItem';
 
 export interface IHomePageProps {}
 
 const Homepage: React.FC<IHomePageProps> = (props) => {
-  return <h1>Homepage DENEME</h1>;
+  return <div>
+    <h1>Please search for a movie or movies</h1>
+    <CarouselItem></CarouselItem>
+  </div>
 };
 export default Homepage;

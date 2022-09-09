@@ -12,7 +12,7 @@ const breadcrumbNameMap: { [key: string]: string } = {
   "/about": "About Page",
   "/movies": "Movies Page",
 };
-const Navbar: React.FC = () => {
+const Navbar: React.FC= (props) => {
   // type belirleyemedim
   const location = useLocation();
   const pathSnippets = location.pathname.split("/").filter((i) => i);

@@ -1,10 +1,10 @@
-import { useRef } from "react";
+import { useRef, useState } from "react";
 import './Searchbar.scss';
 import { Input } from "antd";
 
 const Searchbar: React.FC = () => {
   const { Search } = Input;
-  //   const [searchTerm, setSearchTerm] = useState<string>("");
+  const [searchTerm, setSearchTerm] = useState<any>("");
   // const movieInputRef = useRef<HTMLInputElement>(null)
 
   //   const movieCtx = useContext<any>(MoviesContext);
@@ -22,13 +22,12 @@ const Searchbar: React.FC = () => {
   //     // searchMovies(searchTerm);
   //   }
   // };
-  const deneme = (e: any) => {
-    console.log("tuşa basıldı", e.target.value);
-  };
-
+  
   const onSearch = (e: any) => {
     console.log("search basıldı",e);
+    setSearchTerm(e);
   }
+  console.log(searchTerm);
   return (
     <Search
       className="searchbar"
@@ -36,7 +35,6 @@ const Searchbar: React.FC = () => {
       allowClear
       enterButton="Search"
       size="large"
-      // onChange={(e) => deneme(e)} // bu anlık olarak değişikliği konsola veriyor
       onSearch={(e) => onSearch(e)} // bu butona basınca direkt yazılı olanı consola basıyor
     />
   );
