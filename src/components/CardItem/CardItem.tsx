@@ -1,5 +1,4 @@
-import React, { useState, useEffect, useContext } from "react";
-import MoviesContext from "../../store/moviesContext";
+import React, { useState, useEffect} from "react";
 import { Route } from "react-router-dom";
 import axios from "axios";
 import "antd/dist/antd.css";
@@ -18,9 +17,6 @@ export interface ICardItemProps {
 const CardItem: React.FC<ICardItemProps> = (props) => {
   const searchTerm = "the"; // burası context ile searchbardan alınacak
   const [moviesState, setMoviesState] = useState<Array<any>>([]);
-  const [singleId,setSingleId] = useState<number>(0)
-  const [singleName,setSingleName] = useState<string>("")
-  const [routeSingle, setRouteSingle] = useState<boolean>(false);
 
   useEffect(() => {
     const getMovies = async (key: string) => {

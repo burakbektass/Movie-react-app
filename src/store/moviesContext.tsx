@@ -1,4 +1,4 @@
-import { createContext, PropsWithChildren} from "react";
+import { createContext} from "react";
 
 export const movie:any = {
   // Type bulamadım
